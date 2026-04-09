@@ -186,9 +186,11 @@ export class MessageChannelMetadataService {
   }
 
   async createEmailForwardingChannel({
+    handle,
     userWorkspaceId,
     workspaceId,
   }: {
+    handle: string;
     userWorkspaceId: string;
     workspaceId: string;
   }): Promise<CreateEmailForwardingChannelOutput> {
@@ -215,7 +217,7 @@ export class MessageChannelMetadataService {
 
     const connectedAccount = await this.connectedAccountMetadataService.create({
       workspaceId,
-      handle: forwardingAddress,
+      handle,
       provider: ConnectedAccountProvider.EMAIL_FORWARDING,
       userWorkspaceId,
       accessToken: null,

@@ -77,6 +77,14 @@ const SettingsEditImapSmtpCaldavConnection = lazy(() =>
   })),
 );
 
+const SettingsNewEmailForwardingChannel = lazy(() =>
+  import(
+    '@/settings/accounts/components/SettingsAccountsNewEmailForwardingChannel'
+  ).then((module) => ({
+    default: module.SettingsAccountsNewEmailForwardingChannel,
+  })),
+);
+
 const SettingsObjectDetailPage = lazy(() =>
   import('~/pages/settings/data-model/SettingsObjectDetailPage').then(
     (module) => ({
@@ -511,6 +519,10 @@ export const SettingsRoutes = ({ isAdminPageEnabled }: SettingsRoutesProps) => (
         <Route
           path={SettingsPath.EditImapSmtpCaldavConnection}
           element={<SettingsEditImapSmtpCaldavConnection />}
+        />
+        <Route
+          path={SettingsPath.NewEmailForwardingChannel}
+          element={<SettingsNewEmailForwardingChannel />}
         />
       </Route>
       <Route

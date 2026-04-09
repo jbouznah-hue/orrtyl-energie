@@ -19,6 +19,7 @@ import { AuthUserWorkspaceId } from 'src/engine/decorators/auth/auth-user-worksp
 import { AuthWorkspace } from 'src/engine/decorators/auth/auth-workspace.decorator';
 import { NoPermissionGuard } from 'src/engine/guards/no-permission.guard';
 import { WorkspaceAuthGuard } from 'src/engine/guards/workspace-auth.guard';
+import { CreateEmailForwardingChannelInput } from 'src/engine/metadata-modules/message-channel/dtos/create-email-forwarding-channel.input';
 import { CreateEmailForwardingChannelOutput } from 'src/engine/metadata-modules/message-channel/dtos/create-email-forwarding-channel.output';
 import { MessageChannelDTO } from 'src/engine/metadata-modules/message-channel/dtos/message-channel.dto';
 import { UpdateMessageChannelInput } from 'src/engine/metadata-modules/message-channel/dtos/update-message-channel.input';
@@ -135,10 +136,12 @@ export class MessageChannelResolver {
   @Mutation(() => CreateEmailForwardingChannelOutput)
   @UseGuards(NoPermissionGuard)
   async createEmailForwardingChannel(
+    @Args('input') input: CreateEmailForwardingChannelInput,
     @AuthWorkspace() workspace: WorkspaceEntity,
     @AuthUserWorkspaceId() userWorkspaceId: string,
   ): Promise<CreateEmailForwardingChannelOutput> {
     return this.messageChannelMetadataService.createEmailForwardingChannel({
+      handle: input.handle,
       userWorkspaceId,
       workspaceId: workspace.id,
     });

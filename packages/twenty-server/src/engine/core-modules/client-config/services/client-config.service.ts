@@ -237,9 +237,7 @@ export class ClientConfigService {
       isEmailForwardingEnabled:
         this.twentyConfigService.get('STORAGE_TYPE') ===
           StorageDriverType.S_3 &&
-        isNonEmptyString(
-          this.twentyConfigService.get('INBOUND_EMAIL_DOMAIN'),
-        ),
+        isNonEmptyString(this.twentyConfigService.get('INBOUND_EMAIL_DOMAIN')),
       allowRequestsToTwentyIcons: this.twentyConfigService.get(
         'ALLOW_REQUESTS_TO_TWENTY_ICONS',
       ),

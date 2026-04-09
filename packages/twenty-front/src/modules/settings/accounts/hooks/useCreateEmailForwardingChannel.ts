@@ -19,17 +19,25 @@ type CreateEmailForwardingChannelResult = {
   };
 };
 
+type CreateEmailForwardingChannelVariables = {
+  input: {
+    handle: string;
+  };
+};
+
 export const useCreateEmailForwardingChannel = () => {
-  const [createEmailForwardingChannel, { loading, error }] =
-    useMutation<CreateEmailForwardingChannelResult>(
-      CREATE_EMAIL_FORWARDING_CHANNEL,
-      {
-        refetchQueries: [
-          { query: GET_MY_CONNECTED_ACCOUNTS },
-          { query: GET_MY_MESSAGE_CHANNELS },
-        ],
-      },
-    );
+  const [mutate, { loading, error }] = useMutation<
+    CreateEmailForwardingChannelResult,
+    CreateEmailForwardingChannelVariables
+  >(CREATE_EMAIL_FORWARDING_CHANNEL, {
+    refetchQueries: [
+      { query: GET_MY_CONNECTED_ACCOUNTS },
+      { query: GET_MY_MESSAGE_CHANNELS },
+    ],
+  });
+
+  const createEmailForwardingChannel = (handle: string) =>
+    mutate({ variables: { input: { handle } } });
 
   return { createEmailForwardingChannel, loading, error };
 };

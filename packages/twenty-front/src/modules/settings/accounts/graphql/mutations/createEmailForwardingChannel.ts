@@ -1,8 +1,10 @@
 import { gql } from '@apollo/client';
 
 export const CREATE_EMAIL_FORWARDING_CHANNEL = gql`
-  mutation CreateEmailForwardingChannel {
-    createEmailForwardingChannel {
+  mutation CreateEmailForwardingChannel(
+    $input: CreateEmailForwardingChannelInput!
+  ) {
+    createEmailForwardingChannel(input: $input) {
       messageChannel {
         id
         handle
