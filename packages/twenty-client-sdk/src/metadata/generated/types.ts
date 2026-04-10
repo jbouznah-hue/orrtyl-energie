@@ -1893,6 +1893,9 @@ export default {
             "conditionalDisplay": [
                 15
             ],
+            "conditionalAvailabilityExpression": [
+                1
+            ],
             "createdAt": [
                 4
             ],
@@ -3299,10 +3302,10 @@ export default {
             "sdkPackage": [
                 1
             ],
-            "inputCostPerMillionTokensInCredits": [
+            "inputCostPerMillionTokens": [
                 11
             ],
-            "outputCostPerMillionTokensInCredits": [
+            "outputCostPerMillionTokens": [
                 11
             ],
             "nativeCapabilities": [
@@ -3316,6 +3319,15 @@ export default {
             ],
             "providerName": [
                 1
+            ],
+            "providerLabel": [
+                1
+            ],
+            "contextWindowTokens": [
+                11
+            ],
+            "maxOutputTokens": [
+                11
             ],
             "dataResidency": [
                 1
@@ -8351,6 +8363,10 @@ export default {
                     ],
                     "modelId": [
                         1
+                    ],
+                    "fileIds": [
+                        3,
+                        "[UUID!]"
                     ]
                 }
             ],
@@ -9020,12 +9036,38 @@ export default {
                     ]
                 }
             ],
+            "setAdminAiModelsEnabled": [
+                6,
+                {
+                    "modelIds": [
+                        1,
+                        "[String!]!"
+                    ],
+                    "enabled": [
+                        6,
+                        "Boolean!"
+                    ]
+                }
+            ],
             "setAdminAiModelRecommended": [
                 6,
                 {
                     "modelId": [
                         1,
                         "String!"
+                    ],
+                    "recommended": [
+                        6,
+                        "Boolean!"
+                    ]
+                }
+            ],
+            "setAdminAiModelsRecommended": [
+                6,
+                {
+                    "modelIds": [
+                        1,
+                        "[String!]!"
                     ],
                     "recommended": [
                         6,
@@ -10159,6 +10201,9 @@ export default {
             "conditionalDisplay": [
                 15
             ],
+            "conditionalAvailabilityExpression": [
+                1
+            ],
             "__typename": [
                 1
             ]
@@ -10230,6 +10275,9 @@ export default {
             ],
             "conditionalDisplay": [
                 15
+            ],
+            "conditionalAvailabilityExpression": [
+                1
             ],
             "__typename": [
                 1

@@ -23,7 +23,6 @@ import {
 import { DomainServerConfigService } from 'src/engine/core-modules/domain/domain-server-config/services/domain-server-config.service';
 import { PUBLIC_FEATURE_FLAGS } from 'src/engine/core-modules/feature-flag/constants/public-feature-flag.const';
 import { TwentyConfigService } from 'src/engine/core-modules/twenty-config/twenty-config.service';
-import { convertDollarsToBillingCredits } from 'src/engine/metadata-modules/ai/ai-billing/utils/convert-dollars-to-billing-credits.util';
 import {
   AUTO_SELECT_FAST_MODEL_ID,
   AUTO_SELECT_SMART_MODEL_ID,
@@ -71,6 +70,13 @@ export class ClientConfigService {
       this.aiModelRegistryService.getAdminFilteredModels();
     const recommendedModelIds =
       this.aiModelRegistryService.getRecommendedModelIds();
+    const resolvedProviders =
+      this.aiModelRegistryService.getResolvedProvidersForAdmin();
+
+    const getProviderLabel = (providerName?: string | null) =>
+      providerName
+        ? (resolvedProviders[providerName]?.label ?? providerName)
+        : undefined;
 
     const aiModels: ClientAIModelConfig[] = availableModels.map(
       (registeredModel) => {
@@ -79,6 +85,7 @@ export class ClientConfigService {
         );
 
         const modelFamily = modelConfig?.modelFamily;
+        const providerName = registeredModel.providerName;
 
         return {
           modelId: registeredModel.modelId,
@@ -88,20 +95,15 @@ export class ClientConfigService {
             ? MODEL_FAMILY_LABELS[modelFamily]
             : undefined,
           sdkPackage: registeredModel.sdkPackage,
-          providerName: registeredModel.providerName,
+          providerName,
+          providerLabel: getProviderLabel(providerName),
           nativeCapabilities: this.deriveNativeCapabilities(
             registeredModel.sdkPackage,
           ),
-          inputCostPerMillionTokensInCredits: modelConfig
-            ? convertDollarsToBillingCredits(
-                modelConfig.inputCostPerMillionTokens,
-              )
-            : 0,
-          outputCostPerMillionTokensInCredits: modelConfig
-            ? convertDollarsToBillingCredits(
-                modelConfig.outputCostPerMillionTokens,
-              )
-            : 0,
+          inputCostPerMillionTokens: modelConfig?.inputCostPerMillionTokens,
+          outputCostPerMillionTokens: modelConfig?.outputCostPerMillionTokens,
+          contextWindowTokens: modelConfig?.contextWindowTokens,
+          maxOutputTokens: modelConfig?.maxOutputTokens,
           isDeprecated: modelConfig?.isDeprecated,
           isRecommended: recommendedModelIds.has(registeredModel.modelId),
           dataResidency: modelConfig?.dataResidency,
@@ -131,9 +133,17 @@ export class ClientConfigService {
             'Default',
           modelFamily: defaultPerformanceModelConfig?.modelFamily,
           providerName: defaultPerformanceModel?.providerName,
+          providerLabel: getProviderLabel(
+            defaultPerformanceModel?.providerName,
+          ),
           sdkPackage: defaultPerformanceModel?.sdkPackage ?? null,
-          inputCostPerMillionTokensInCredits: 0,
-          outputCostPerMillionTokensInCredits: 0,
+          inputCostPerMillionTokens:
+            defaultPerformanceModelConfig?.inputCostPerMillionTokens,
+          outputCostPerMillionTokens:
+            defaultPerformanceModelConfig?.outputCostPerMillionTokens,
+          contextWindowTokens:
+            defaultPerformanceModelConfig?.contextWindowTokens,
+          maxOutputTokens: defaultPerformanceModelConfig?.maxOutputTokens,
         },
         {
           modelId: AUTO_SELECT_FAST_MODEL_ID,
@@ -143,9 +153,14 @@ export class ClientConfigService {
             'Default',
           modelFamily: defaultSpeedModelConfig?.modelFamily,
           providerName: defaultSpeedModel?.providerName,
+          providerLabel: getProviderLabel(defaultSpeedModel?.providerName),
           sdkPackage: defaultSpeedModel?.sdkPackage ?? null,
-          inputCostPerMillionTokensInCredits: 0,
-          outputCostPerMillionTokensInCredits: 0,
+          inputCostPerMillionTokens:
+            defaultSpeedModelConfig?.inputCostPerMillionTokens,
+          outputCostPerMillionTokens:
+            defaultSpeedModelConfig?.outputCostPerMillionTokens,
+          contextWindowTokens: defaultSpeedModelConfig?.contextWindowTokens,
+          maxOutputTokens: defaultSpeedModelConfig?.maxOutputTokens,
         },
       );
     }
