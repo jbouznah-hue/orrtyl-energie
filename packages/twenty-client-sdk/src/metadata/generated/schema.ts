@@ -1470,6 +1470,7 @@ export interface ClientConfig {
     isGoogleCalendarEnabled: Scalars['Boolean']
     isConfigVariablesInDbEnabled: Scalars['Boolean']
     isImapSmtpCaldavEnabled: Scalars['Boolean']
+    isEmailForwardingEnabled: Scalars['Boolean']
     allowRequestsToTwentyIcons: Scalars['Boolean']
     calendarBookingPageId?: Scalars['String']
     isCloudflareIntegrationEnabled: Scalars['Boolean']
@@ -2675,7 +2676,7 @@ export interface MessageChannel {
 
 export type MessageChannelVisibility = 'METADATA' | 'SUBJECT' | 'SHARE_EVERYTHING'
 
-export type MessageChannelType = 'EMAIL' | 'SMS'
+export type MessageChannelType = 'EMAIL' | 'SMS' | 'EMAIL_FORWARDING'
 
 export type MessageChannelContactAutoCreationPolicy = 'SENT_AND_RECEIVED' | 'SENT' | 'NONE'
 
@@ -2686,6 +2687,12 @@ export type MessageChannelPendingGroupEmailsAction = 'GROUP_EMAILS_DELETION' | '
 export type MessageChannelSyncStatus = 'NOT_SYNCED' | 'ONGOING' | 'ACTIVE' | 'FAILED_INSUFFICIENT_PERMISSIONS' | 'FAILED_UNKNOWN'
 
 export type MessageChannelSyncStage = 'PENDING_CONFIGURATION' | 'MESSAGE_LIST_FETCH_PENDING' | 'MESSAGE_LIST_FETCH_SCHEDULED' | 'MESSAGE_LIST_FETCH_ONGOING' | 'MESSAGES_IMPORT_PENDING' | 'MESSAGES_IMPORT_SCHEDULED' | 'MESSAGES_IMPORT_ONGOING' | 'FAILED'
+
+export interface CreateEmailForwardingChannelOutput {
+    messageChannel: MessageChannel
+    forwardingAddress: Scalars['String']
+    __typename: 'CreateEmailForwardingChannelOutput'
+}
 
 export interface MessageFolder {
     id: Scalars['UUID']
@@ -3002,6 +3009,7 @@ export interface Mutation {
     updateMessageFolder: MessageFolder
     updateMessageFolders: MessageFolder[]
     updateMessageChannel: MessageChannel
+    createEmailForwardingChannel: CreateEmailForwardingChannelOutput
     deleteConnectedAccount: ConnectedAccountDTO
     updateCalendarChannel: CalendarChannel
     createWebhook: Webhook
@@ -4649,6 +4657,7 @@ export interface ClientConfigGenqlSelection{
     isGoogleCalendarEnabled?: boolean | number
     isConfigVariablesInDbEnabled?: boolean | number
     isImapSmtpCaldavEnabled?: boolean | number
+    isEmailForwardingEnabled?: boolean | number
     allowRequestsToTwentyIcons?: boolean | number
     calendarBookingPageId?: boolean | number
     isCloudflareIntegrationEnabled?: boolean | number
@@ -5957,6 +5966,13 @@ export interface MessageChannelGenqlSelection{
     __scalar?: boolean | number
 }
 
+export interface CreateEmailForwardingChannelOutputGenqlSelection{
+    messageChannel?: MessageChannelGenqlSelection
+    forwardingAddress?: boolean | number
+    __typename?: boolean | number
+    __scalar?: boolean | number
+}
+
 export interface MessageFolderGenqlSelection{
     id?: boolean | number
     name?: boolean | number
@@ -6317,6 +6333,7 @@ export interface MutationGenqlSelection{
     updateMessageFolder?: (MessageFolderGenqlSelection & { __args: {input: UpdateMessageFolderInput} })
     updateMessageFolders?: (MessageFolderGenqlSelection & { __args: {input: UpdateMessageFoldersInput} })
     updateMessageChannel?: (MessageChannelGenqlSelection & { __args: {input: UpdateMessageChannelInput} })
+    createEmailForwardingChannel?: (CreateEmailForwardingChannelOutputGenqlSelection & { __args: {input: CreateEmailForwardingChannelInput} })
     deleteConnectedAccount?: (ConnectedAccountDTOGenqlSelection & { __args: {id: Scalars['UUID']} })
     updateCalendarChannel?: (CalendarChannelGenqlSelection & { __args: {input: UpdateCalendarChannelInput} })
     createWebhook?: (WebhookGenqlSelection & { __args: {input: CreateWebhookInput} })
@@ -6684,6 +6701,8 @@ export interface UpdateMessageFoldersInput {ids: Scalars['UUID'][],update: Updat
 export interface UpdateMessageChannelInput {id: Scalars['UUID'],update: UpdateMessageChannelInputUpdates}
 
 export interface UpdateMessageChannelInputUpdates {visibility?: (MessageChannelVisibility | null),isContactAutoCreationEnabled?: (Scalars['Boolean'] | null),contactAutoCreationPolicy?: (MessageChannelContactAutoCreationPolicy | null),messageFolderImportPolicy?: (MessageFolderImportPolicy | null),isSyncEnabled?: (Scalars['Boolean'] | null),excludeNonProfessionalEmails?: (Scalars['Boolean'] | null),excludeGroupEmails?: (Scalars['Boolean'] | null)}
+
+export interface CreateEmailForwardingChannelInput {handle: Scalars['String']}
 
 export interface UpdateCalendarChannelInput {id: Scalars['UUID'],update: UpdateCalendarChannelInputUpdates}
 
@@ -8840,6 +8859,14 @@ export interface LogicFunctionLogsInput {applicationId?: (Scalars['UUID'] | null
     
 
 
+    const CreateEmailForwardingChannelOutput_possibleTypes: string[] = ['CreateEmailForwardingChannelOutput']
+    export const isCreateEmailForwardingChannelOutput = (obj?: { __typename?: any } | null): obj is CreateEmailForwardingChannelOutput => {
+      if (!obj?.__typename) throw new Error('__typename is missing in "isCreateEmailForwardingChannelOutput"')
+      return CreateEmailForwardingChannelOutput_possibleTypes.includes(obj.__typename)
+    }
+    
+
+
     const MessageFolder_possibleTypes: string[] = ['MessageFolder']
     export const isMessageFolder = (obj?: { __typename?: any } | null): obj is MessageFolder => {
       if (!obj?.__typename) throw new Error('__typename is missing in "isMessageFolder"')
@@ -9533,7 +9560,8 @@ export const enumMessageChannelVisibility = {
 
 export const enumMessageChannelType = {
    EMAIL: 'EMAIL' as const,
-   SMS: 'SMS' as const
+   SMS: 'SMS' as const,
+   EMAIL_FORWARDING: 'EMAIL_FORWARDING' as const
 }
 
 export const enumMessageChannelContactAutoCreationPolicy = {
