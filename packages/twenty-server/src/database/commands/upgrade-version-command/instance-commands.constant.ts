@@ -12,6 +12,7 @@ import { AddCreditBalanceToBillingCustomerFastInstanceCommand } from 'src/databa
 import { BackfillWorkspaceIdOnIndirectEntitiesSlowInstanceCommand } from 'src/database/commands/upgrade-version-command/1-22/1-22-instance-command-slow-1775758621018-backfill-workspace-id-on-indirect-entities';
 import { DropWorkspaceVersionColumnFastInstanceCommand } from 'src/database/commands/upgrade-version-command/1-23/1-23-instance-command-fast-1785000000000-drop-workspace-version-column';
 import { AddGlobalObjectContextToCommandMenuItemAvailabilityTypeFastInstanceCommand } from 'src/database/commands/upgrade-version-command/1-23/1-23-instance-command-fast-1776090711153-add-global-object-context-to-command-menu-item-availability-type';
+import { SetCalendarEventDescriptionDisplayedMaxRowsFastInstanceCommand } from 'src/database/commands/upgrade-version-command/1-23/1-23-instance-command-fast-1786000000000-set-calendar-event-description-displayed-max-rows';
 
 export const INSTANCE_COMMANDS = [
   AddViewFieldGroupIdIndexOnViewFieldFastInstanceCommand,
@@ -26,4 +27,5 @@ export const INSTANCE_COMMANDS = [
   AddCreditBalanceToBillingCustomerFastInstanceCommand,
   DropWorkspaceVersionColumnFastInstanceCommand,
   AddGlobalObjectContextToCommandMenuItemAvailabilityTypeFastInstanceCommand,
+  SetCalendarEventDescriptionDisplayedMaxRowsFastInstanceCommand,
 ];
