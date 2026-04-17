@@ -15,6 +15,7 @@ import { DropWorkspaceVersionColumnFastInstanceCommand } from 'src/database/comm
 import { AddGlobalObjectContextToCommandMenuItemAvailabilityTypeFastInstanceCommand } from 'src/database/commands/upgrade-version-command/1-23/1-23-instance-command-fast-1776090711153-add-global-object-context-to-command-menu-item-availability-type';
 import { SetCalendarEventDescriptionDisplayedMaxRowsFastInstanceCommand } from 'src/database/commands/upgrade-version-command/1-23/1-23-instance-command-fast-1786000000000-set-calendar-event-description-displayed-max-rows';
 import { AddPageLayoutIdToCommandMenuItemFastInstanceCommand } from 'src/database/commands/upgrade-version-command/1-23/1-23-instance-command-fast-1776168404836-add-page-layout-id-to-command-menu-item';
+import { AddConditionalAvailabilityExpressionToPageLayoutWidgetFastInstanceCommand } from 'src/database/commands/upgrade-version-command/1-23/1-23-instance-command-fast-1775654781000-add-conditional-availability-expression-to-page-layout-widget';
 
 export const INSTANCE_COMMANDS = [
   AddViewFieldGroupIdIndexOnViewFieldFastInstanceCommand,
@@ -32,4 +33,5 @@ export const INSTANCE_COMMANDS = [
   AddGlobalObjectContextToCommandMenuItemAvailabilityTypeFastInstanceCommand,
   SetCalendarEventDescriptionDisplayedMaxRowsFastInstanceCommand,
   AddPageLayoutIdToCommandMenuItemFastInstanceCommand,
+  AddConditionalAvailabilityExpressionToPageLayoutWidgetFastInstanceCommand,
 ];
