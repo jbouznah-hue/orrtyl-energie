@@ -32,7 +32,7 @@ export const FOOTER_DATA: FooterDataType = {
           href: 'https://docs.twenty.com/getting-started/introduction',
           external: true,
         },
-        { label: 'Release Notes', href: '/releases', external: false },
+        { label: 'Releases', href: '/releases', external: false },
         {
           label: 'Halftone generator',
           href: '/halftone',
