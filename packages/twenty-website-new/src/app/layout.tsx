@@ -1,12 +1,20 @@
 import { FooterVisibilityGate } from '@/app/_components/FooterVisibilityGate';
-import { FOOTER_DATA } from '@/app/_constants/footer';
+import {
+  FOOTER_DATA,
+  SITE_DESCRIPTION,
+  SITE_LOGO_PATH,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+  TWITTER_HANDLE,
+} from '@/app/_constants';
 import { ContactCalModalRoot } from '@/app/components/ContactCalModal';
 import { Footer } from '@/sections/Footer/components';
 import { theme } from '@/theme';
 import { cssVariables } from '@/theme/css-variables';
 import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Aleo, Azeret_Mono, Host_Grotesk, VT323 } from 'next/font/google';
 
 const hostGrotesk = Host_Grotesk({
@@ -65,32 +73,93 @@ const StyledMain = styled.main`
   flex-grow: 1;
 `;
 
-const SOCIAL_PREVIEW_IMAGE_PATH = '/images/shared/companies/logos/twenty.png';
+const SOCIAL_PREVIEW_IMAGE = {
+  url: SITE_LOGO_PATH,
+  width: 512,
+  height: 512,
+  alt: `${SITE_NAME} — open source CRM`,
+  type: 'image/png',
+};
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.twenty.com/'),
-  title: 'Twenty | #1 open source CRM',
-  description:
-    'The #1 open source CRM for modern teams. Modular, scalable, and built to fit your business.',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: [
+    'CRM',
+    'open source CRM',
+    'sales CRM',
+    'customer relationship management',
+    'Twenty',
+    'Twenty CRM',
+    'Salesforce alternative',
+    'HubSpot alternative',
+  ],
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: 'technology',
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
   openGraph: {
-    title: 'Twenty | #1 open source CRM',
-    description:
-      'The #1 open source CRM for modern teams. Modular, scalable, and built to fit your business.',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     type: 'website',
-    images: [
-      {
-        url: SOCIAL_PREVIEW_IMAGE_PATH,
-        alt: 'Twenty',
-      },
-    ],
+    siteName: SITE_NAME,
+    url: SITE_URL,
+    locale: 'en_US',
+    images: [SOCIAL_PREVIEW_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Twenty | #1 open source CRM',
-    description:
-      'The #1 open source CRM for modern teams. Modular, scalable, and built to fit your business.',
-    images: [SOCIAL_PREVIEW_IMAGE_PATH],
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    site: TWITTER_HANDLE,
+    creator: TWITTER_HANDLE,
+    images: [SITE_LOGO_PATH],
   },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: SITE_LOGO_PATH,
+  },
+  manifest: '/manifest.webmanifest',
+  appleWebApp: {
+    capable: true,
+    title: SITE_NAME,
+    statusBarStyle: 'default',
+  },
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+  ],
+  colorScheme: 'light',
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({

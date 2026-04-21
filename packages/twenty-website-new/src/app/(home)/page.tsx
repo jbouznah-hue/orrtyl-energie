@@ -8,7 +8,17 @@ import {
   THREE_CARDS_ILLUSTRATION_DATA,
 } from '@/app/(home)/_constants';
 import { TalkToUsButton } from '@/app/components/ContactCalModal';
-import { FAQ_DATA, MENU_DATA, TRUSTED_BY_DATA } from '@/app/_constants';
+import {
+  FAQ_DATA,
+  MENU_DATA,
+  SITE_DESCRIPTION,
+  SITE_LEGAL_NAME,
+  SITE_LOGO_PATH,
+  SITE_NAME,
+  SITE_SOCIAL_URLS,
+  SITE_URL,
+  TRUSTED_BY_DATA,
+} from '@/app/_constants';
 import { Body, Eyebrow, Heading, LinkButton } from '@/design-system/components';
 import { Pages } from '@/enums/pages';
 import { ArrowRightUpIcon } from '@/icons';
@@ -29,12 +39,29 @@ import { styled } from '@linaria/react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Twenty | #1 open source CRM',
-  description:
-    'The #1 open source CRM for modern teams. Modular, scalable, and built to fit your business.',
+  alternates: { canonical: '/' },
 };
 
 const HOME_TOP_BACKGROUND_COLOR = '#F4F4F4';
+
+const ORGANIZATION_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE_NAME,
+  legalName: SITE_LEGAL_NAME,
+  url: SITE_URL,
+  logo: new URL(SITE_LOGO_PATH, SITE_URL).toString(),
+  description: SITE_DESCRIPTION,
+  sameAs: SITE_SOCIAL_URLS,
+};
+
+const WEBSITE_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  url: SITE_URL,
+  publisher: { '@type': 'Organization', name: SITE_NAME },
+};
 const PRODUCT_HUNT_LAUNCH_URL =
   'https://www.producthunt.com/products/twenty-crm?launch=twenty-2-0';
 const PRODUCT_HUNT_BRAND_COLOR = '#DA552F';
@@ -151,6 +178,16 @@ export default async function HomePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(ORGANIZATION_JSON_LD),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_JSON_LD) }}
+      />
       <Menu.Root
         backgroundColor={HOME_TOP_BACKGROUND_COLOR}
         scheme="primary"
