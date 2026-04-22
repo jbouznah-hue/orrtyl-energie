@@ -11,6 +11,7 @@ import { WorkspaceCacheService } from 'src/engine/workspace-cache/services/works
 import { STANDARD_COMMAND_MENU_ITEMS } from 'src/engine/workspace-manager/twenty-standard-application/constants/standard-command-menu-item.constant';
 import { computeTwentyStandardApplicationAllFlatEntityMaps } from 'src/engine/workspace-manager/twenty-standard-application/utils/twenty-standard-application-all-flat-entity-maps.constant';
 import { WorkspaceMigrationValidateBuildAndRunService } from 'src/engine/workspace-manager/workspace-migration/services/workspace-migration-validate-build-and-run-service';
+import { replaceLegacyPageEditModeIdentifier } from 'src/database/commands/upgrade-version-command/2-1/utils/replace-legacy-page-edit-mode-identifier.util';
 
 const UNIVERSAL_IDENTIFIERS_TO_UPDATE = new Set<string>([
   STANDARD_COMMAND_MENU_ITEMS.editRecordPageLayout.universalIdentifier,
@@ -18,24 +19,6 @@ const UNIVERSAL_IDENTIFIERS_TO_UPDATE = new Set<string>([
   STANDARD_COMMAND_MENU_ITEMS.saveDashboardLayout.universalIdentifier,
   STANDARD_COMMAND_MENU_ITEMS.cancelDashboardLayout.universalIdentifier,
 ]);
-
-const LEGACY_PAGE_EDIT_MODE_IDENTIFIER = 'isPageInEditMode';
-const DASHBOARD_PAGE_LAYOUT_EDIT_MODE_IDENTIFIER =
-  'isDashboardPageLayoutInEditMode';
-const LEGACY_PAGE_EDIT_MODE_REGEX = /\bisPageInEditMode\b/g;
-
-const replaceLegacyPageEditModeIdentifier = (
-  conditionalAvailabilityExpression: string | null,
-) => {
-  if (!isDefined(conditionalAvailabilityExpression)) {
-    return conditionalAvailabilityExpression;
-  }
-
-  return conditionalAvailabilityExpression.replace(
-    LEGACY_PAGE_EDIT_MODE_REGEX,
-    DASHBOARD_PAGE_LAYOUT_EDIT_MODE_IDENTIFIER,
-  );
-};
 
 @RegisteredWorkspaceCommand('2.1.0', 1795000001000)
 @Command({
@@ -113,21 +96,14 @@ export class AddLayoutCustomizationGuardToEditCommandsCommand extends ActiveOrSu
     for (const existingItem of Object.values(
       existingFlatCommandMenuItemMaps.byUniversalIdentifier,
     ).filter(isDefined)) {
-      if (UNIVERSAL_IDENTIFIERS_TO_UPDATE.has(existingItem.universalIdentifier)) {
+      if (
+        UNIVERSAL_IDENTIFIERS_TO_UPDATE.has(existingItem.universalIdentifier)
+      ) {
         continue;
       }
 
       const currentConditionalAvailabilityExpression =
         existingItem.conditionalAvailabilityExpression;
-
-      if (
-        !isDefined(currentConditionalAvailabilityExpression) ||
-        !currentConditionalAvailabilityExpression.includes(
-          LEGACY_PAGE_EDIT_MODE_IDENTIFIER,
-        )
-      ) {
-        continue;
-      }
 
       const nextConditionalAvailabilityExpression =
         replaceLegacyPageEditModeIdentifier(
