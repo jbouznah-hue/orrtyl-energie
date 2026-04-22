@@ -3,7 +3,6 @@
   "dependencies": {
     "@apollo/client": "^4.0.0",
     "@floating-ui/react": "^0.24.3",
-    "@lifeomic/axios-fetch": "^3.1.0",
     "@linaria/core": "^6.2.0",
     "@linaria/react": "^6.2.1",
     "@radix-ui/colors": "^3.0.0",
