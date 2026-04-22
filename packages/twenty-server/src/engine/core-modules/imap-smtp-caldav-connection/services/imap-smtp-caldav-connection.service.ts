@@ -33,8 +33,9 @@ export class ImapSmtpCaldavService {
     handle: string,
     params: ConnectionParameters,
   ): Promise<boolean> {
-    const validatedHost =
-      await this.secureHttpClientService.getValidatedHost(params.host);
+    const validatedHost = await this.secureHttpClientService.getValidatedHost(
+      params.host,
+    );
     const client = new ImapFlow({
       host: validatedHost,
       port: params.port,
@@ -97,8 +98,9 @@ export class ImapSmtpCaldavService {
     handle: string,
     params: ConnectionParameters,
   ): Promise<boolean> {
-    const validatedHost =
-      await this.secureHttpClientService.getValidatedHost(params.host);
+    const validatedHost = await this.secureHttpClientService.getValidatedHost(
+      params.host,
+    );
     const transport = createTransport({
       host: validatedHost,
       port: params.port,

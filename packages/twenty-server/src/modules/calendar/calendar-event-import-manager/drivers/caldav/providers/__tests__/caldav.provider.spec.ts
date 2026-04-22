@@ -41,7 +41,9 @@ describe('CalDavClientProvider', () => {
 
       await provider.getCalDavCalendarClient(connectedAccount);
 
-      expect(mockSecureHttpClientService.createSsrfSafeFetch).toHaveBeenCalledTimes(1);
+      expect(
+        mockSecureHttpClientService.createSsrfSafeFetch,
+      ).toHaveBeenCalledTimes(1);
       expect(MockCalDAVClient).toHaveBeenCalledWith(
         expect.objectContaining({ fetch: fakeFetch }),
       );
