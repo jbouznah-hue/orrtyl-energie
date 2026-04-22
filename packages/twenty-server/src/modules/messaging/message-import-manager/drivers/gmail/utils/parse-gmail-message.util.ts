@@ -1,4 +1,5 @@
 import assert from 'assert';
+import de from 'date-fns/locale/de/index';
 
 import { type gmail_v1 } from 'googleapis';
 
@@ -31,9 +32,8 @@ export const parseGmailMessage = (message: gmail_v1.Schema$Message) => {
     ? Buffer.from(bodyResult.data, 'base64').toString()
     : '';
 
-  const htmlToTextConverter = createHtmlToTextConverter();
   const text = bodyResult?.isHtml
-    ? htmlToTextConverter(decodedBody)
+    ? createHtmlToTextConverter()(decodedBody)
     : decodedBody;
 
   const attachments = getAttachmentData(message);
