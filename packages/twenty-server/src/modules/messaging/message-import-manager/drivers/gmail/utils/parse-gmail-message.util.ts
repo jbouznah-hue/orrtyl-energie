@@ -1,5 +1,4 @@
 import assert from 'assert';
-import de from 'date-fns/locale/de/index';
 
 import { type gmail_v1 } from 'googleapis';
 
