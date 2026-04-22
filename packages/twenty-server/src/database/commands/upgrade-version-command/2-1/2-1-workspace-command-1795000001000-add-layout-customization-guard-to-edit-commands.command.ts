@@ -46,7 +46,7 @@ export class AddLayoutCustomizationGuardToEditCommandsCommand extends ActiveOrSu
       `${isDryRun ? '[DRY RUN] ' : ''}Starting Edit command availability expression update for workspace ${workspaceId}`,
     );
 
-    const { twentyStandardFlatApplication } =
+    const { twentyStandardFlatApplication, workspaceCustomFlatApplication } =
       await this.applicationService.findWorkspaceTwentyStandardAndCustomApplicationOrThrow(
         { workspaceId },
       );
@@ -159,7 +159,7 @@ export class AddLayoutCustomizationGuardToEditCommandsCommand extends ActiveOrSu
           },
           workspaceId,
           applicationUniversalIdentifier:
-            twentyStandardFlatApplication.universalIdentifier,
+            workspaceCustomFlatApplication.universalIdentifier,
         },
       );
 
