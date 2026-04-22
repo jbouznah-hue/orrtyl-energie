@@ -11,19 +11,15 @@ import { STANDARD_COMMAND_MENU_ITEMS } from 'src/engine/workspace-manager/twenty
 import { computeTwentyStandardApplicationAllFlatEntityMaps } from 'src/engine/workspace-manager/twenty-standard-application/utils/twenty-standard-application-all-flat-entity-maps.constant';
 import { WorkspaceMigrationValidateBuildAndRunService } from 'src/engine/workspace-manager/workspace-migration/services/workspace-migration-validate-build-and-run-service';
 
-const PREVIOUS_EXPRESSION_BY_UNIVERSAL_IDENTIFIER: Record<
-  string,
-  string | null
-> = {
-  [STANDARD_COMMAND_MENU_ITEMS.exportRecords.universalIdentifier]: null,
-  [STANDARD_COMMAND_MENU_ITEMS.exportView.universalIdentifier]: null,
-  [STANDARD_COMMAND_MENU_ITEMS.importRecords.universalIdentifier]:
-    'not hasAnySoftDeleteFilterOnView',
-};
+const UNIVERSAL_IDENTIFIERS_TO_FIX = new Set<string>([
+  STANDARD_COMMAND_MENU_ITEMS.exportRecords.universalIdentifier,
+  STANDARD_COMMAND_MENU_ITEMS.exportView.universalIdentifier,
+  STANDARD_COMMAND_MENU_ITEMS.importRecords.universalIdentifier,
+]);
 
-@RegisteredWorkspaceCommand('1.24.0', 1790000000000)
+@RegisteredWorkspaceCommand('2.1.0', 1790000000000)
 @Command({
-  name: 'upgrade:1-24:gate-export-import-by-permission-flag',
+  name: 'upgrade:2-1:gate-export-import-by-permission-flag',
   description:
     'Gate export/import command menu items (exportRecords, exportView, importRecords) behind EXPORT_CSV / IMPORT_CSV permission flags',
 })
@@ -64,9 +60,7 @@ export class GateExportImportCommandMenuItemsByPermissionFlagCommand extends Act
         twentyStandardApplicationId: twentyStandardFlatApplication.id,
       });
 
-    const itemsToUpdate = Object.keys(
-      PREVIOUS_EXPRESSION_BY_UNIVERSAL_IDENTIFIER,
-    )
+    const itemsToUpdate = [...UNIVERSAL_IDENTIFIERS_TO_FIX]
       .map((universalIdentifier) => {
         const standardItem =
           standardAllFlatEntityMaps.flatCommandMenuItemMaps
@@ -76,13 +70,11 @@ export class GateExportImportCommandMenuItemsByPermissionFlagCommand extends Act
             universalIdentifier
           ];
 
-        if (!isDefined(standardItem) || !isDefined(existingItem)) {
-          return undefined;
-        }
-
         if (
-          existingItem.conditionalAvailabilityExpression !==
-          PREVIOUS_EXPRESSION_BY_UNIVERSAL_IDENTIFIER[universalIdentifier]
+          !isDefined(standardItem) ||
+          !isDefined(existingItem) ||
+          existingItem.conditionalAvailabilityExpression ===
+            standardItem.conditionalAvailabilityExpression
         ) {
           return undefined;
         }
@@ -98,7 +90,7 @@ export class GateExportImportCommandMenuItemsByPermissionFlagCommand extends Act
 
     if (itemsToUpdate.length === 0) {
       this.logger.log(
-        `No export/import command menu items needed updating for workspace ${workspaceId}`,
+        `Export/import command menu item expressions already up to date for workspace ${workspaceId}`,
       );
 
       return;
