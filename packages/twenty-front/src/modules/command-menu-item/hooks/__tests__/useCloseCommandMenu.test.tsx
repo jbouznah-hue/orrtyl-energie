@@ -63,6 +63,7 @@ const getWrapper =
           },
           selectedRecords: [],
           featureFlags: {},
+          permissionFlags: {},
           targetObjectReadPermissions: {},
           targetObjectWritePermissions: {},
           objectMetadataItem: {},

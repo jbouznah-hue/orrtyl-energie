@@ -23,6 +23,7 @@ const buildContext = (
   },
   selectedRecords: [],
   featureFlags: {},
+  permissionFlags: {},
   targetObjectReadPermissions: {},
   targetObjectWritePermissions: {},
   objectMetadataItem: {},

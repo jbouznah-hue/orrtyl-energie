@@ -1,3 +1,4 @@
+import { currentUserWorkspaceState } from '@/auth/states/currentUserWorkspaceState';
 import { currentWorkspaceState } from '@/auth/states/currentWorkspaceState';
 import { objectPermissionsFamilySelector } from '@/auth/states/objectPermissionsFamilySelector';
 import { CommandMenuContext } from '@/command-menu-item/contexts/CommandMenuContext';
@@ -24,6 +25,7 @@ export const StandalonePageCommandMenu = () => {
   const isMobile = useIsMobile();
   const commandMenuItems = useAtomStateValue(commandMenuItemsSelector);
   const currentWorkspace = useAtomStateValue(currentWorkspaceState);
+  const currentUserWorkspace = useAtomStateValue(currentUserWorkspaceState);
   const currentPageLayoutId = useAtomStateValue(currentPageLayoutIdState);
   const { objectMetadataItems } = useObjectMetadataItems();
 
@@ -32,6 +34,12 @@ export const StandalonePageCommandMenu = () => {
 
     for (const flag of currentWorkspace?.featureFlags ?? []) {
       featureFlags[flag.key] = flag.value === true;
+    }
+
+    const permissionFlags: Record<string, boolean> = {};
+
+    for (const flag of currentUserWorkspace?.permissionFlags ?? []) {
+      permissionFlags[flag] = true;
     }
 
     const targetObjectReadPermissions: Record<string, boolean> = {};
@@ -69,12 +77,18 @@ export const StandalonePageCommandMenu = () => {
       },
       selectedRecords: [],
       featureFlags,
+      permissionFlags,
       targetObjectReadPermissions,
       targetObjectWritePermissions,
       objectMetadataItem: {},
       objectMetadataLabel: '',
     };
-  }, [currentWorkspace?.featureFlags, objectMetadataItems, store]);
+  }, [
+    currentWorkspace?.featureFlags,
+    currentUserWorkspace?.permissionFlags,
+    objectMetadataItems,
+    store,
+  ]);
 
   const filteredCommandMenuItems = useMemo(() => {
     return commandMenuItems
