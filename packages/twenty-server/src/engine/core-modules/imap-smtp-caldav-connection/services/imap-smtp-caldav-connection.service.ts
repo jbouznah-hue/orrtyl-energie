@@ -8,6 +8,7 @@ import { ConnectedAccountProvider } from 'twenty-shared/types';
 import { Repository } from 'typeorm';
 
 import { UserInputError } from 'src/engine/core-modules/graphql/utils/graphql-errors.util';
+import { SecureHttpClientService } from 'src/engine/core-modules/secure-http-client/secure-http-client.service';
 import { ConnectedAccountEntity } from 'src/engine/metadata-modules/connected-account/entities/connected-account.entity';
 import {
   type AccountType,
@@ -25,14 +26,17 @@ export class ImapSmtpCaldavService {
     private readonly globalWorkspaceOrmManager: GlobalWorkspaceOrmManager,
     @InjectRepository(ConnectedAccountEntity)
     private readonly connectedAccountRepository: Repository<ConnectedAccountEntity>,
+    private readonly secureHttpClientService: SecureHttpClientService,
   ) {}
 
   async testImapConnection(
     handle: string,
     params: ConnectionParameters,
   ): Promise<boolean> {
+    const validatedHost =
+      await this.secureHttpClientService.getValidatedHost(params.host);
     const client = new ImapFlow({
-      host: params.host,
+      host: validatedHost,
       port: params.port,
       secure: params.secure ?? true,
       auth: {
@@ -93,8 +97,10 @@ export class ImapSmtpCaldavService {
     handle: string,
     params: ConnectionParameters,
   ): Promise<boolean> {
+    const validatedHost =
+      await this.secureHttpClientService.getValidatedHost(params.host);
     const transport = createTransport({
-      host: params.host,
+      host: validatedHost,
       port: params.port,
       auth: {
         user: params.username ?? handle,
@@ -124,10 +130,12 @@ export class ImapSmtpCaldavService {
     handle: string,
     params: ConnectionParameters,
   ): Promise<boolean> {
+    const ssrfSafeFetch = this.secureHttpClientService.createSsrfSafeFetch();
     const client = new CalDAVClient({
       serverUrl: params.host,
       username: params.username ?? handle,
       password: params.password,
+      fetch: ssrfSafeFetch,
     });
 
     try {
