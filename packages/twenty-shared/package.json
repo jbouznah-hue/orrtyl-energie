@@ -1,5 +1,5 @@
 {
-  "name": "twenty-shared",
+  "name": "orrtyl-shared",
   "private": true,
   "sideEffects": false,
   "main": "dist/index.cjs",

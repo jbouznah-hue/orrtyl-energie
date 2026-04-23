@@ -1,9 +1,9 @@
-resource "kubernetes_namespace" "twentycrm" {
+resource "kubernetes_namespace" "orrtyl-crm" {
   metadata {
     annotations = {
-      name = var.twentycrm_namespace
+      name = var.orrtyl-crm_namespace
     }
 
-    name = var.twentycrm_namespace
+    name = var.orrtyl-crm_namespace
   }
 }

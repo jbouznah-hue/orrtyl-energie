@@ -114,7 +114,7 @@ COPY --chown=1000 --from=twenty-server-build /app/packages/twenty-front/package.
 COPY --chown=1000 --from=twenty-front-build /app/packages/twenty-front/build /app/packages/twenty-server/dist/front
 
 LABEL org.opencontainers.image.source=https://github.com/twentyhq/twenty
-LABEL org.opencontainers.image.description="Production Twenty image with backend and frontend."
+LABEL org.opencontainers.image.description="Production ORRTYL Energie CRM image with backend and frontend."
 
 RUN mkdir -p /app/.local-storage /app/packages/twenty-server/.local-storage && \
     chown 1000:1000 /app/.local-storage /app/packages/twenty-server/.local-storage
@@ -215,7 +215,7 @@ ARG REACT_APP_SERVER_BASE_URL
 ARG APP_VERSION=0.0.0
 
 ENV S6_KEEP_ENV=1
-ENV PG_DATABASE_URL=postgres://twenty:twenty@localhost:5432/default \
+ENV PG_DATABASE_URL=postgres://orrtyl_app_user:orrtyl_app_user@localhost:5432/orrtyl_energie \
     SERVER_URL=http://localhost:2020 \
     REDIS_URL=redis://localhost:6379 \
     STORAGE_TYPE=local \
@@ -234,6 +234,6 @@ EXPOSE 2020
 VOLUME ["/data/postgres", "/app/packages/twenty-server/.local-storage"]
 
 LABEL org.opencontainers.image.source=https://github.com/twentyhq/twenty
-LABEL org.opencontainers.image.description="All-in-one Twenty image for local development and SDK usage. Includes PostgreSQL, Redis, server, and worker."
+LABEL org.opencontainers.image.description="All-in-one ORRTYL Energie CRM image for local development and SDK usage. Includes PostgreSQL, Redis, server, and worker."
 
 ENTRYPOINT ["/init"]

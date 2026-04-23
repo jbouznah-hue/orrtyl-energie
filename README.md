@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h2 align="center" >The #1 Open-Source CRM</h2>
+<h2 align="center" >ORRTYL Energie - CRM Energies Renouvelables</h2>
 
 <p align="center"><a href="https://twenty.com"><img src="./packages/twenty-website/public/images/readme/globe-icon.svg" width="12" height="12"/> Website</a> · <a href="https://docs.twenty.com"><img src="./packages/twenty-website/public/images/readme/book-icon.svg" width="12" height="12"/> Documentation</a> · <a href="https://github.com/orgs/twentyhq/projects/1"><img src="./packages/twenty-website/public/images/readme/map-icon.svg" width="12" height="12"/> Roadmap </a> · <a href="https://discord.gg/cx5n4Jzs57"><img src="./packages/twenty-website/public/images/readme/discord-icon.svg" width="12" height="12"/> Discord</a> · <a href="https://www.figma.com/file/xt8O9mFeLl46C5InWwoMrN/Twenty"><img src="./packages/twenty-website/public/images/readme/figma-icon.png"  width="12" height="12"/>  Figma</a></p>
 
@@ -20,9 +20,9 @@
 
 <br />
 
-# Why Twenty
+# Why ORRTYL Energie
 
-Twenty gives technical teams the building blocks for a custom CRM that meets complex business needs and quickly adapts as the business evolves. Twenty is the CRM you build, ship, and version like the rest of your stack.
+ORRTYL Energie gives technical teams the building blocks for a custom CRM that meets complex business needs and quickly adapts as the business evolves. ORRTYL Energie is the CRM you build, ship, and version like the rest of your stack.
 
 <a href="https://twenty.com/why-twenty"><img src="./packages/twenty-website/public/images/readme/star-icon.svg" width="14" height="14"/> Learn more about why we built Twenty</a>
 

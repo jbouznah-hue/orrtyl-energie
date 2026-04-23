@@ -1,8 +1,8 @@
 {
-  "name": "twenty-desktop",
-  "productName": "Twenty",
+  "name": "orrtyl-desktop",
+  "productName": "ORRTYL Energie",
   "version": "1.0.0",
-  "description": "Twenty meeting recorder",
+  "description": "ORRTYL Energie meeting recorder",
   "main": ".webpack/main",
   "scripts": {
     "start": "concurrently \"yarn start:server\" \"yarn start:electron\"",

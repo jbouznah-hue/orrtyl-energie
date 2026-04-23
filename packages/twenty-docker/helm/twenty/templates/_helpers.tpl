@@ -83,7 +83,7 @@ password
 {{- $host := .Values.db.external.host -}}
 {{- $port := .Values.db.external.port | default 5432 -}}
 {{- $user := .Values.db.external.user | default "postgres" -}}
-{{- $db := .Values.db.external.database | default "twenty" -}}
+{{- $db := .Values.db.external.database | default "orrtyl_energie" -}}
 {{- $qs := ternary "?sslmode=require" "" (eq .Values.db.external.ssl true) -}}
 {{- printf "%s://%s:$(DB_PASSWORD)@%s:%v/%s%s" $scheme $user $host $port $db $qs -}}
 {{- end -}}

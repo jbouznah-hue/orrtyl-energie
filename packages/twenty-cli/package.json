@@ -1,7 +1,7 @@
 {
-  "name": "twenty-cli",
+  "name": "orrtyl-cli",
   "version": "0.3.1",
-  "description": "[DEPRECATED] Use twenty-sdk instead: https://www.npmjs.com/package/twenty-sdk",
+  "description": "[DEPRECATED] Use orrtyl-sdk instead",
   "scripts": {
     "build": "echo 'use npx nx build'",
     "start": "echo 'deprecated'"

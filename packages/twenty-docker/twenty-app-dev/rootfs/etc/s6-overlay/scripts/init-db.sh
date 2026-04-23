@@ -19,18 +19,18 @@ step_done
 
 # Create role if it doesn't exist
 su-exec postgres psql -h localhost -tc \
-  "SELECT 1 FROM pg_roles WHERE rolname='twenty'" | grep -q 1 \
-  || su-exec postgres psql -h localhost -c "CREATE ROLE twenty WITH LOGIN PASSWORD 'twenty' SUPERUSER"
+  "SELECT 1 FROM pg_roles WHERE rolname='orrtyl_app_user'" | grep -q 1 \
+  || su-exec postgres psql -h localhost -c "CREATE ROLE orrtyl_app_user WITH LOGIN PASSWORD 'orrtyl_app_user' SUPERUSER"
 
 # Create database if it doesn't exist
 su-exec postgres psql -h localhost -tc \
-  "SELECT 1 FROM pg_database WHERE datname='default'" | grep -q 1 \
-  || su-exec postgres createdb -h localhost -O twenty default
+  "SELECT 1 FROM pg_database WHERE datname='orrtyl_energie'" | grep -q 1 \
+  || su-exec postgres createdb -h localhost -O orrtyl_app_user orrtyl_energie
 
-# Run Twenty database setup and migrations
+# Run ORRTYL Energie CRM database setup and migrations
 cd /app/packages/twenty-server
 
-has_schema=$(PGPASSWORD=twenty psql -h localhost -U twenty -d default -tAc \
+has_schema=$(PGPASSWORD=orrtyl_app_user psql -h localhost -U orrtyl_app_user -d orrtyl_energie -tAc \
   "SELECT EXISTS (SELECT 1 FROM information_schema.schemata WHERE schema_name = 'core')")
 
 if [ "$has_schema" = "f" ]; then
@@ -56,7 +56,7 @@ yarn command:prod cache:flush
 step_done
 
 # Only seed on first boot — check if the dev workspace already exists
-has_workspace=$(PGPASSWORD=twenty psql -h localhost -U twenty -d default -tAc \
+has_workspace=$(PGPASSWORD=orrtyl_app_user psql -h localhost -U orrtyl_app_user -d orrtyl_energie -tAc \
   "SELECT EXISTS (SELECT 1 FROM core.workspace WHERE id = '20202020-1c25-4d02-bf25-6aeccf7ea419')")
 
 if [ "$has_workspace" = "f" ]; then

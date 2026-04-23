@@ -1,5 +1,5 @@
 {
-  "name": "twenty-utils",
+  "name": "orrtyl-utils",
   "private": true,
   "scripts": {
     "nx": "NX_DEFAULT_PROJECT=twenty-front node ../../node_modules/nx/bin/nx.js",

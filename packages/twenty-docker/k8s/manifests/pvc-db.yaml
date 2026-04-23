@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: twentycrm-db-pvc
-  namespace: twentycrm
+  name: orrtyl-crm-db-pvc
+  namespace: orrtyl-crm
 spec:
   storageClassName: default
-  volumeName: twentycrm-db-pv
+  volumeName: orrtyl-crm-db-pv
   accessModes:
     - ReadWriteOnce
   resources:

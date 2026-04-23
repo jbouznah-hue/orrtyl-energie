@@ -1,6 +1,6 @@
 {
-  "name": "twenty-e2e-testing",
-  "description": "",
+  "name": "orrtyl-e2e-testing",
+  "description": "ORRTYL Energie - End-to-end testing",
   "author": "",
   "private": true,
   "license": "AGPL-3.0",

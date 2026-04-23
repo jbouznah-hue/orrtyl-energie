@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: twentycrm
-  namespace: twentycrm
+  name: orrtyl-crm
+  namespace: orrtyl-crm
   annotations:
     nginx.ingress.kubernetes.io/configuration-snippet: |
       more_set_headers "X-Forwarded-For $http_x_forwarded_for";
@@ -19,6 +19,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: twentycrm-server
+                name: orrtyl-crm-server
                 port:
                   name: http-tcp

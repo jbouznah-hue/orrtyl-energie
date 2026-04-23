@@ -6,8 +6,8 @@ receivers:
 
 exporters:
   clickhouse:
-    endpoint: tcp://twenty_clickhouse:9000
-    database: twenty_dev
+    endpoint: tcp://orrtyl_clickhouse:9000
+    database: orrtyl_dev
     username: default
     password: devPassword
   debug:

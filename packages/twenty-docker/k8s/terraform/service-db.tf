@@ -1,11 +1,11 @@
-resource "kubernetes_service" "twentycrm_db" {
+resource "kubernetes_service" "orrtyl-crm_db" {
   metadata {
-    name      = "${var.twentycrm_app_name}-db"
-    namespace = kubernetes_namespace.twentycrm.metadata.0.name
+    name      = "${var.orrtyl-crm_app_name}-db"
+    namespace = kubernetes_namespace.orrtyl-crm.metadata.0.name
   }
   spec {
     selector = {
-      app = "${var.twentycrm_app_name}-db"
+      app = "${var.orrtyl-crm_app_name}-db"
     }
     session_affinity = "ClientIP"
     port {

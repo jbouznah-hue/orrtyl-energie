@@ -1,17 +1,17 @@
-resource "kubernetes_deployment" "twentycrm_worker" {
+resource "kubernetes_deployment" "orrtyl-crm_worker" {
   metadata {
-    name      = "${var.twentycrm_app_name}-worker"
-    namespace = kubernetes_namespace.twentycrm.metadata.0.name
+    name      = "${var.orrtyl-crm_app_name}-worker"
+    namespace = kubernetes_namespace.orrtyl-crm.metadata.0.name
     labels = {
-      app = "${var.twentycrm_app_name}-worker"
+      app = "${var.orrtyl-crm_app_name}-worker"
     }
   }
 
   spec {
-    replicas = var.twentycrm_worker_replicas
+    replicas = var.orrtyl-crm_worker_replicas
     selector {
       match_labels = {
-        app = "${var.twentycrm_app_name}-worker"
+        app = "${var.orrtyl-crm_app_name}-worker"
       }
     }
 
@@ -26,31 +26,31 @@ resource "kubernetes_deployment" "twentycrm_worker" {
     template {
       metadata {
         labels = {
-          app = "${var.twentycrm_app_name}-worker"
+          app = "${var.orrtyl-crm_app_name}-worker"
         }
       }
 
       spec {
         container {
-          image   = var.twentycrm_server_image
-          name    = var.twentycrm_app_name
+          image   = var.orrtyl-crm_server_image
+          name    = var.orrtyl-crm_app_name
           stdin   = true
           tty     = true
           command = ["yarn", "worker:prod"]
 
           env {
             name  = "SERVER_URL"
-            value = var.twentycrm_app_hostname
+            value = var.orrtyl-crm_app_hostname
           }
 
           env {
             name  = "PG_DATABASE_URL"
-            value = "postgres://twenty:${var.twentycrm_pgdb_admin_password}@${kubernetes_service.twentycrm_db.metadata.0.name}.${kubernetes_namespace.twentycrm.metadata.0.name}.svc.cluster.local/default"
+            value = "postgres://twenty:${var.orrtyl-crm_pgdb_admin_password}@${kubernetes_service.orrtyl-crm_db.metadata.0.name}.${kubernetes_namespace.orrtyl-crm.metadata.0.name}.svc.cluster.local/default"
           }
 
           env {
             name  = "REDIS_URL"
-            value = "redis://${kubernetes_service.twentycrm_redis.metadata.0.name}.${kubernetes_namespace.twentycrm.metadata.0.name}.svc.cluster.local:6379"
+            value = "redis://${kubernetes_service.orrtyl-crm_redis.metadata.0.name}.${kubernetes_namespace.orrtyl-crm.metadata.0.name}.svc.cluster.local:6379"
           }
 
           env {
@@ -91,9 +91,9 @@ resource "kubernetes_deployment" "twentycrm_worker" {
     }
   }
   depends_on = [
-    kubernetes_deployment.twentycrm_db,
-    kubernetes_deployment.twentycrm_redis,
-    kubernetes_deployment.twentycrm_server,
-    kubernetes_secret.twentycrm_tokens,
+    kubernetes_deployment.orrtyl-crm_db,
+    kubernetes_deployment.orrtyl-crm_redis,
+    kubernetes_deployment.orrtyl-crm_server,
+    kubernetes_secret.orrtyl-crm_tokens,
   ]
 }

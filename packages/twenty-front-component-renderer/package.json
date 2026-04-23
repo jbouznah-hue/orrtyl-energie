@@ -1,5 +1,5 @@
 {
-  "name": "twenty-front-component-renderer",
+  "name": "orrtyl-front-component-renderer",
   "private": true,
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",

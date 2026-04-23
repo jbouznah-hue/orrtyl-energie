@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: twentycrm-docker-data-pvc
-  namespace: twentycrm
+  name: orrtyl-crm-docker-data-pvc
+  namespace: orrtyl-crm
 spec:
   storageClassName: default
-  volumeName: twentycrm-docker-data-pv
+  volumeName: orrtyl-crm-docker-data-pv
   accessModes:
     - ReadWriteOnce
   resources:

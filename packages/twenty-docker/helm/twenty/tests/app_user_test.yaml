@@ -10,7 +10,7 @@ tests:
     template: templates/secret-db-url.yaml
     set:
       db.enabled: true
-      db.internal.appUser: twenty_app_user
+      db.internal.appUser: orrtyl_app_user
     asserts:
       - isKind:
           of: Secret

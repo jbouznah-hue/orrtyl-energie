@@ -5,8 +5,8 @@ datasources:
     type: grafana-clickhouse-datasource
     uid: clickhouse_datasource
     jsonData:
-      server: twenty_clickhouse
-      defaultDatabase: twenty_dev
+      server: orrtyl_clickhouse
+      defaultDatabase: orrtyl_dev
       port: 9000
       protocol: native
       tlsSkipVerify: true

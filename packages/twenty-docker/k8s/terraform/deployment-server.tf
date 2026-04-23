@@ -1,17 +1,17 @@
-resource "kubernetes_deployment" "twentycrm_server" {
+resource "kubernetes_deployment" "orrtyl-crm_server" {
   metadata {
-    name      = "${var.twentycrm_app_name}-server"
-    namespace = kubernetes_namespace.twentycrm.metadata.0.name
+    name      = "${var.orrtyl-crm_app_name}-server"
+    namespace = kubernetes_namespace.orrtyl-crm.metadata.0.name
     labels = {
-      app = "${var.twentycrm_app_name}-server"
+      app = "${var.orrtyl-crm_app_name}-server"
     }
   }
 
   spec {
-    replicas = var.twentycrm_server_replicas
+    replicas = var.orrtyl-crm_server_replicas
     selector {
       match_labels = {
-        app = "${var.twentycrm_app_name}-server"
+        app = "${var.orrtyl-crm_app_name}-server"
       }
     }
 
@@ -26,14 +26,14 @@ resource "kubernetes_deployment" "twentycrm_server" {
     template {
       metadata {
         labels = {
-          app = "${var.twentycrm_app_name}-server"
+          app = "${var.orrtyl-crm_app_name}-server"
         }
       }
 
       spec {
         container {
-          image = var.twentycrm_server_image
-          name  = var.twentycrm_app_name
+          image = var.orrtyl-crm_server_image
+          name  = var.orrtyl-crm_app_name
           stdin = true
           tty   = true
 
@@ -44,16 +44,16 @@ resource "kubernetes_deployment" "twentycrm_server" {
 
           env {
             name  = "SERVER_URL"
-            value = var.twentycrm_app_hostname
+            value = var.orrtyl-crm_app_hostname
           }
 
           env {
             name  = "PG_DATABASE_URL"
-            value = "postgres://twenty:${var.twentycrm_pgdb_admin_password}@${kubernetes_service.twentycrm_db.metadata.0.name}.${kubernetes_namespace.twentycrm.metadata.0.name}.svc.cluster.local/default"
+            value = "postgres://twenty:${var.orrtyl-crm_pgdb_admin_password}@${kubernetes_service.orrtyl-crm_db.metadata.0.name}.${kubernetes_namespace.orrtyl-crm.metadata.0.name}.svc.cluster.local/default"
           }
           env {
             name  = "REDIS_URL"
-            value = "redis://${kubernetes_service.twentycrm_redis.metadata.0.name}.${kubernetes_namespace.twentycrm.metadata.0.name}.svc.cluster.local:6379"
+            value = "redis://${kubernetes_service.orrtyl-crm_redis.metadata.0.name}.${kubernetes_namespace.orrtyl-crm.metadata.0.name}.svc.cluster.local:6379"
           }
           env {
             name  = "DISABLE_DB_MIGRATIONS"
@@ -100,12 +100,12 @@ resource "kubernetes_deployment" "twentycrm_server" {
 
           volume_mount {
             name       = "server-data"
-            mount_path = var.twentycrm_server_data_mount_path
+            mount_path = var.orrtyl-crm_server_data_mount_path
           }
 
           volume_mount {
             name       = "docker-data"
-            mount_path = var.twentycrm_docker_data_mount_path
+            mount_path = var.orrtyl-crm_docker_data_mount_path
           }
         }
 
@@ -131,8 +131,8 @@ resource "kubernetes_deployment" "twentycrm_server" {
     }
   }
   depends_on = [
-    kubernetes_deployment.twentycrm_db,
-    kubernetes_deployment.twentycrm_redis,
-    kubernetes_secret.twentycrm_tokens
+    kubernetes_deployment.orrtyl-crm_db,
+    kubernetes_deployment.orrtyl-crm_redis,
+    kubernetes_secret.orrtyl-crm_tokens
   ]
 }
