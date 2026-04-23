@@ -577,7 +577,7 @@ export const buildOpportunityStandardFlatFieldMetadatas = ({
       label: i18nLabel(msg`Référence dossier ENR`),
       description: i18nLabel(msg`Référence unique du dossier ENR`),
       icon: 'IconHash',
-      isNullable: false,
+      isNullable: true,
       isSearchable: true,
     },
     standardObjectMetadataRelatedEntityIds,
