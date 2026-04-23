@@ -2,6 +2,7 @@ import { isDefined } from 'twenty-shared/utils';
 
 import { escapeLiteral } from 'src/engine/workspace-manager/workspace-migration/utils/remove-sql-injection.util';
 
+
 export const formatSqlValue = (
   value: unknown,
   isJsonColumn = false,
