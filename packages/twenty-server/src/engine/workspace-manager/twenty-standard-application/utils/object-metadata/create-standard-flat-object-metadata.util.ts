@@ -213,6 +213,37 @@ export const STANDARD_FLAT_OBJECT_METADATA_BUILDERS_BY_OBJECT_NAME = {
       twentyStandardApplicationId,
       now,
     }),
+  installateur: ({
+    now,
+    workspaceId,
+    standardObjectMetadataRelatedEntityIds,
+    twentyStandardApplicationId,
+    dependencyFlatEntityMaps,
+  }: Omit<
+    CreateStandardObjectArgs<'installateur'>,
+    'context' | 'objectName'
+  >) =>
+    createStandardObjectFlatMetadata({
+      objectName: 'installateur',
+      dependencyFlatEntityMaps,
+      context: {
+        universalIdentifier: STANDARD_OBJECTS.installateur.universalIdentifier,
+        nameSingular: 'installateur',
+        namePlural: 'installateurs',
+        labelSingular: i18nLabel(msg`Installateur`),
+        labelPlural: i18nLabel(msg`Installateurs`),
+        description: i18nLabel(msg`Un installateur de panneaux solaires`),
+        icon: 'IconBuildingFactory2',
+        isSearchable: true,
+        shortcut: 'I',
+        duplicateCriteria: [['nom'], ['siret']],
+        labelIdentifierFieldMetadataName: 'nom',
+      },
+      workspaceId,
+      standardObjectMetadataRelatedEntityIds,
+      twentyStandardApplicationId,
+      now,
+    }),
   connectedAccount: ({
     now,
     workspaceId,
@@ -555,8 +586,8 @@ export const STANDARD_FLAT_OBJECT_METADATA_BUILDERS_BY_OBJECT_NAME = {
         universalIdentifier: STANDARD_OBJECTS.opportunity.universalIdentifier,
         nameSingular: 'opportunity',
         namePlural: 'opportunities',
-        labelSingular: i18nLabel(msg`Opportunity`),
-        labelPlural: i18nLabel(msg`Opportunities`),
+        labelSingular: i18nLabel(msg`Dossier ENR`),
+        labelPlural: i18nLabel(msg`Dossiers ENR`),
         description: i18nLabel(msg`An opportunity`),
         icon: 'IconTargetArrow',
         isSearchable: true,

@@ -1936,6 +1936,123 @@ export const STANDARD_OBJECTS = {
       searchVector: {
         universalIdentifier: '428a0da5-4b2e-4ce3-b695-89a8b384e6e3',
       },
+      installateur: {
+        universalIdentifier: '30303030-0002-4001-8001-000000000060',
+      },
+      referenceDossierEnr: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000001',
+      },
+      natureTravaux: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000002',
+      },
+      couleurMpr: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000003',
+      },
+      statutDevis: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000004',
+      },
+      statutVisiteTechnique: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000005',
+      },
+      statutFinancierMpr: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000006',
+      },
+      statutFinancierCee: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000007',
+      },
+      sourceDossier: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000008',
+      },
+      prioriteDossier: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000009',
+      },
+      financementPrincipal: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000010',
+      },
+      typeBien: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000011',
+      },
+      usageBien: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000012',
+      },
+      dateContratEnr: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000013',
+      },
+      surfaceHabitable: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000014',
+      },
+      nombreOccupants: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000015',
+      },
+      anneeConstruction: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000016',
+      },
+      chauffageActuel: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000017',
+      },
+      classeEnergieDpe: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000018',
+      },
+      adresseBien: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000019',
+      },
+      avisDimposition: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000020',
+      },
+      taxeFonciere: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000021',
+      },
+      cniRectoVerso: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000022',
+      },
+      justificatifDomicile: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000023',
+      },
+      acteNotarie: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000024',
+      },
+      photosEnr: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000025',
+      },
+      autresDocuments: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000026',
+      },
+      dateDebutTravaux: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000027',
+      },
+      dateFinTravaux: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000028',
+      },
+      notesInstallation: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000029',
+      },
+      montantAideMpr: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000030',
+      },
+      montantAideCee: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000031',
+      },
+      montantCommission: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000032',
+      },
+      resteAChargeClient: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000033',
+      },
+      totalAidePercu: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000034',
+      },
+      montantTotalFacture: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000035',
+      },
+      dateDepotAnah: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000036',
+      },
+      dateAccordAnah: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000037',
+      },
+      numeroDossierAnah: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000038',
+      },
     },
     indexes: {
       pointOfContactIdIndex: {
@@ -1949,6 +2066,12 @@ export const STANDARD_OBJECTS = {
       },
       searchVectorGinIndex: {
         universalIdentifier: 'f53fdd28-a26b-47ba-81b5-6813ad622720',
+      },
+      installateurIdIndex: {
+        universalIdentifier: '30303030-0002-4001-8001-000000000061',
+      },
+      referenceDossierEnrIndex: {
+        universalIdentifier: '30303030-0003-4001-8001-000000000099',
       },
     },
     views: {
@@ -1973,6 +2096,24 @@ export const STANDARD_OBJECTS = {
           pointOfContact: {
             universalIdentifier: '20202020-af03-4a03-8a03-0aa0b1ca1bb4',
           },
+          referenceDossierEnr: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca1bc0',
+          },
+          natureTravaux: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca1bc1',
+          },
+          couleurMpr: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca1bc2',
+          },
+          stage: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca1bc3',
+          },
+          installateur: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca1bc4',
+          },
+          statutFinancierMpr: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca1bc5',
+          },
         },
       },
       byStage: {
@@ -1996,8 +2137,47 @@ export const STANDARD_OBJECTS = {
           pointOfContact: {
             universalIdentifier: '20202020-af04-4a04-8a04-0aa0b2ca2bb4',
           },
+          referenceDossierEnr: {
+            universalIdentifier: '30303030-af04-4a04-8a04-0aa0b2ca2bc0',
+          },
+          natureTravaux: {
+            universalIdentifier: '30303030-af04-4a04-8a04-0aa0b2ca2bc1',
+          },
+          couleurMpr: {
+            universalIdentifier: '30303030-af04-4a04-8a04-0aa0b2ca2bc2',
+          },
         },
         viewGroups: {
+          aEnvoyerEnMpr: {
+            universalIdentifier: '30303030-af14-4a04-8a04-0aa0b2ca2bf1',
+          },
+          dossierDepose: {
+            universalIdentifier: '30303030-af14-4a04-8a04-0aa0b2ca2bf2',
+          },
+          visiteTechnique: {
+            universalIdentifier: '30303030-af14-4a04-8a04-0aa0b2ca2bf3',
+          },
+          devis: {
+            universalIdentifier: '30303030-af14-4a04-8a04-0aa0b2ca2bf4',
+          },
+          installationPlanifie: {
+            universalIdentifier: '30303030-af14-4a04-8a04-0aa0b2ca2bf5',
+          },
+          installationEnCours: {
+            universalIdentifier: '30303030-af14-4a04-8a04-0aa0b2ca2bf6',
+          },
+          installationTermine: {
+            universalIdentifier: '30303030-af14-4a04-8a04-0aa0b2ca2bf7',
+          },
+          commissionPaye: {
+            universalIdentifier: '30303030-af14-4a04-8a04-0aa0b2ca2bf8',
+          },
+          dossierBloque: {
+            universalIdentifier: '30303030-af14-4a04-8a04-0aa0b2ca2bf9',
+          },
+          dossierAnnule: {
+            universalIdentifier: '30303030-af14-4a04-8a04-0aa0b2ca2bfa',
+          },
           new: {
             universalIdentifier: '20202020-af14-4a04-8a04-0aa0b2ca2bf1',
           },
@@ -2026,6 +2206,27 @@ export const STANDARD_OBJECTS = {
           },
           system: {
             universalIdentifier: '20202020-a003-4a03-8a03-0aa0b1ca3103',
+          },
+          dossierEnr: {
+            universalIdentifier: '30303030-a003-4a03-8a03-0aa0b1ca3110',
+          },
+          logement: {
+            universalIdentifier: '30303030-a003-4a03-8a03-0aa0b1ca3111',
+          },
+          devisVisite: {
+            universalIdentifier: '30303030-a003-4a03-8a03-0aa0b1ca3112',
+          },
+          installation: {
+            universalIdentifier: '30303030-a003-4a03-8a03-0aa0b1ca3113',
+          },
+          financier: {
+            universalIdentifier: '30303030-a003-4a03-8a03-0aa0b1ca3114',
+          },
+          administratifAnah: {
+            universalIdentifier: '30303030-a003-4a03-8a03-0aa0b1ca3115',
+          },
+          documents: {
+            universalIdentifier: '30303030-a003-4a03-8a03-0aa0b1ca3116',
           },
         },
         viewFields: {
@@ -2070,6 +2271,123 @@ export const STANDARD_OBJECTS = {
           },
           timelineActivities: {
             universalIdentifier: '20202020-af03-4a03-8a03-0aa0b1ca3210',
+          },
+          referenceDossierEnr: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3301',
+          },
+          natureTravaux: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3302',
+          },
+          couleurMpr: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3303',
+          },
+          prioriteDossier: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3304',
+          },
+          sourceDossier: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3305',
+          },
+          dateContratEnr: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3306',
+          },
+          typeBien: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3307',
+          },
+          adresseBien: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3308',
+          },
+          surfaceHabitable: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3309',
+          },
+          classeEnergieDpe: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca330a',
+          },
+          chauffageActuel: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca330b',
+          },
+          usageBien: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca330c',
+          },
+          anneeConstruction: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca330d',
+          },
+          nombreOccupants: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca330e',
+          },
+          statutDevis: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca330f',
+          },
+          statutVisiteTechnique: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3310',
+          },
+          installateur: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3311',
+          },
+          dateDebutTravaux: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3312',
+          },
+          dateFinTravaux: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3313',
+          },
+          notesInstallation: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3314',
+          },
+          montantAideMpr: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3315',
+          },
+          montantAideCee: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3316',
+          },
+          montantCommission: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3317',
+          },
+          resteAChargeClient: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3318',
+          },
+          totalAidePercu: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3319',
+          },
+          montantTotalFacture: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca331a',
+          },
+          statutFinancierMpr: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca331b',
+          },
+          statutFinancierCee: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca331c',
+          },
+          financementPrincipal: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca331d',
+          },
+          dateDepotAnah: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca331e',
+          },
+          dateAccordAnah: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca331f',
+          },
+          numeroDossierAnah: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3320',
+          },
+          avisDimposition: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3321',
+          },
+          taxeFonciere: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3322',
+          },
+          cniRectoVerso: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3323',
+          },
+          justificatifDomicile: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3324',
+          },
+          acteNotarie: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3325',
+          },
+          photosEnr: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3326',
+          },
+          autresDocuments: {
+            universalIdentifier: '30303030-af03-4a03-8a03-0aa0b1ca3327',
           },
         },
       },
@@ -3093,6 +3411,129 @@ export const STANDARD_OBJECTS = {
           },
           system: {
             universalIdentifier: '20202020-a010-4a10-8a10-a0bcf10aaef4',
+          },
+        },
+      },
+    },
+  },
+  installateur: {
+    universalIdentifier: '30303030-0001-4001-8001-000000000001',
+    fields: {
+      id: { universalIdentifier: '30303030-0001-4002-8001-000000000002' },
+      createdAt: {
+        universalIdentifier: '30303030-0001-4003-8001-000000000003',
+      },
+      updatedAt: {
+        universalIdentifier: '30303030-0001-4004-8001-000000000004',
+      },
+      deletedAt: {
+        universalIdentifier: '30303030-0001-4005-8001-000000000005',
+      },
+      nom: { universalIdentifier: '30303030-0001-4006-8001-000000000006' },
+      siret: { universalIdentifier: '30303030-0001-4007-8001-000000000007' },
+      telephone: { universalIdentifier: '30303030-0001-4008-8001-000000000008' },
+      email: { universalIdentifier: '30303030-0001-4009-8001-000000000009' },
+      adresse: { universalIdentifier: '30303030-0001-400a-8001-000000000010' },
+      certificationRge: {
+        universalIdentifier: '30303030-0001-400b-8001-000000000011',
+      },
+      dateValiditeRge: {
+        universalIdentifier: '30303030-0001-400c-8001-000000000012',
+      },
+      notes: { universalIdentifier: '30303030-0001-400d-8001-000000000013' },
+      position: { universalIdentifier: '30303030-0001-400e-8001-000000000014' },
+      createdBy: {
+        universalIdentifier: '30303030-0001-400f-8001-000000000015',
+      },
+      updatedBy: {
+        universalIdentifier: '30303030-0001-4010-8001-000000000016',
+      },
+      dossiers: { universalIdentifier: '30303030-0001-4011-8001-000000000017' },
+      searchVector: {
+        universalIdentifier: '30303030-0001-4016-8001-000000000022',
+      },
+    },
+    indexes: {
+      nomIndex: {
+        universalIdentifier: '30303030-0001-4017-8001-000000000023',
+      },
+      searchVectorGinIndex: {
+        universalIdentifier: '30303030-0001-4018-8001-000000000024',
+      },
+    },
+    views: {
+      allInstallateurs: {
+        universalIdentifier: '30303030-0001-4019-8001-000000000025',
+        viewFields: {
+          nom: {
+            universalIdentifier: '30303030-0001-401a-8001-000000000026',
+          },
+          siret: {
+            universalIdentifier: '30303030-0001-401b-8001-000000000027',
+          },
+          telephone: {
+            universalIdentifier: '30303030-0001-401c-8001-000000000028',
+          },
+          certificationRge: {
+            universalIdentifier: '30303030-0001-401d-8001-000000000029',
+          },
+          dateValiditeRge: {
+            universalIdentifier: '30303030-0001-401e-8001-000000000030',
+          },
+          createdAt: {
+            universalIdentifier: '30303030-0001-401f-8001-000000000031',
+          },
+        },
+      },
+      installateurRecordPageFields: {
+        universalIdentifier: '30303030-0001-4020-8001-000000000032',
+        viewFieldGroups: {
+          general: {
+            universalIdentifier: '30303030-0001-4021-8001-000000000033',
+          },
+          certification: {
+            universalIdentifier: '30303030-0001-4022-8001-000000000034',
+          },
+          system: {
+            universalIdentifier: '30303030-0001-4023-8001-000000000035',
+          },
+        },
+        viewFields: {
+          siret: {
+            universalIdentifier: '30303030-0001-4024-8001-000000000036',
+          },
+          telephone: {
+            universalIdentifier: '30303030-0001-4025-8001-000000000037',
+          },
+          email: {
+            universalIdentifier: '30303030-0001-4026-8001-000000000038',
+          },
+          adresse: {
+            universalIdentifier: '30303030-0001-4027-8001-000000000039',
+          },
+          certificationRge: {
+            universalIdentifier: '30303030-0001-4028-8001-000000000040',
+          },
+          dateValiditeRge: {
+            universalIdentifier: '30303030-0001-4029-8001-000000000041',
+          },
+          notes: {
+            universalIdentifier: '30303030-0001-402a-8001-000000000042',
+          },
+          dossiers: {
+            universalIdentifier: '30303030-0001-402b-8001-000000000043',
+          },
+          createdAt: {
+            universalIdentifier: '30303030-0001-402c-8001-000000000044',
+          },
+          createdBy: {
+            universalIdentifier: '30303030-0001-402d-8001-000000000045',
+          },
+          updatedAt: {
+            universalIdentifier: '30303030-0001-402e-8001-000000000046',
+          },
+          updatedBy: {
+            universalIdentifier: '30303030-0001-402f-8001-000000000047',
           },
         },
       },
