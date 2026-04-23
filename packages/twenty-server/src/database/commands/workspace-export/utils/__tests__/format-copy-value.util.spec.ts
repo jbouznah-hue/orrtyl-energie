@@ -47,6 +47,7 @@ describe('formatPgCopyField', () => {
   it('should format PostgreSQL array literals', () => {
     expect(formatPgCopyField([])).toBe('{}');
     expect(formatPgCopyField(['a', 'b'])).toBe('{"a","b"}');
+    expect(formatPgCopyField(['val\twith\ttab'])).toBe('{"val\\twith\\ttab"}');
   });
 
   it('should JSON-serialize arrays of objects with escaping', () => {

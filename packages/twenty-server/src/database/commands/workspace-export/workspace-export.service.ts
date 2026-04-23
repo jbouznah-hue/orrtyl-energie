@@ -21,10 +21,9 @@ import { getCoreEntityMetadatasWithWorkspaceId } from 'src/database/commands/wor
 import { generateWorkspaceSchemaDdl } from 'src/database/commands/workspace-export/utils/generate-workspace-schema-ddl.util';
 import { buildInsertPrefix } from 'src/database/commands/workspace-export/utils/build-insert-prefix.util';
 import { buildWorkspaceTableColumnSets } from 'src/database/commands/workspace-export/utils/build-workspace-table-column-sets.util';
-import {
-  formatSqlValue,
-} from 'src/database/commands/workspace-export/utils/format-sql-value.util';
+import { formatSqlValue } from 'src/database/commands/workspace-export/utils/format-sql-value.util';
 import { formatPgCopyField } from './utils/format-pg-copy-value.util';
+import { isNonEmptyArray } from 'twenty-shared/utils';
 
 const BATCH_SIZE = 10_000;
 
@@ -176,7 +175,7 @@ export class WorkspaceExportService {
           whereClause: '"workspaceId" = $1',
           queryParameters: [workspaceId],
           jsonColumns: this.buildJsonColumnSet(entityMetadata),
-          });
+        });
       } catch (error) {
         this.logger.warn(`${entityMetadata.tableName}: skipped`, error);
       }
@@ -231,7 +230,7 @@ export class WorkspaceExportService {
         queryParameters,
       );
 
-      if (rows.length === 0) break;
+      if (!isNonEmptyArray(rows)) break;
 
       if (!columnNames) {
         columnNames = Object.keys(rows[0]).filter(
@@ -274,7 +273,7 @@ export class WorkspaceExportService {
     stream,
     jsonColumns,
     excludedColumns,
-  }: Omit<WriteRowsOptions, 'onConflictDoNothing'>): Promise<void> {
+  }: Omit<WriteRowsOptions, 'whereClause' | 'queryParameters'>): Promise<void> {
     let columnNames: string[] | undefined;
     let totalRows = 0;
 
@@ -283,7 +282,7 @@ export class WorkspaceExportService {
         `SELECT * FROM "${schemaName}"."${tableName}" ORDER BY "id" LIMIT ${BATCH_SIZE} OFFSET ${offset}`,
       );
 
-      if (rows.length === 0) break;
+      if (!isNonEmptyArray(rows)) break;
 
       if (!columnNames) {
         columnNames = Object.keys(rows[0]).filter(
@@ -312,7 +311,7 @@ export class WorkspaceExportService {
       if (rows.length < BATCH_SIZE) break;
     }
 
-    if (columnNames) {
+    if (isNonEmptyArray(columnNames)) {
       stream.write('\\.\n\n');
     }
 

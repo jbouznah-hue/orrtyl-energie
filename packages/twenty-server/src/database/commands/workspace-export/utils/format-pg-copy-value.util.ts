@@ -38,10 +38,8 @@ export const formatPgCopyField = (
     const formattedElements = value.map((element) => {
       if (!isDefined(element)) return 'NULL';
 
-      const stringElement = String(element);
-      const escapedElement = stringElement
-        .replace(/\\/g, '\\\\')
-        .replace(/"/g, '\\"');
+      const stringElement = escapeCopyText(String(element));
+      const escapedElement = stringElement.replace(/"/g, '\\"');
 
       return `"${escapedElement}"`;
     });
