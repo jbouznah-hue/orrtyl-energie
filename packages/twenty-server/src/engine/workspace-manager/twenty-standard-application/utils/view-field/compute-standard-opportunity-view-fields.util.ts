@@ -121,44 +121,6 @@ export const computeStandardOpportunityViewFields = (
         aggregateOperation: AggregateOperations.MIN,
       },
     }),
-    // Hidden fields (kept for compatibility)
-    allOpportunitiesName: createStandardViewFieldFlatMetadata({
-      ...args,
-      objectName: 'opportunity',
-      context: {
-        viewName: 'allOpportunities',
-        viewFieldName: 'name',
-        fieldName: 'name',
-        position: 9,
-        isVisible: false,
-        size: 150,
-      },
-    }),
-    allOpportunitiesCreatedBy: createStandardViewFieldFlatMetadata({
-      ...args,
-      objectName: 'opportunity',
-      context: {
-        viewName: 'allOpportunities',
-        viewFieldName: 'createdBy',
-        fieldName: 'createdBy',
-        position: 10,
-        isVisible: false,
-        size: 150,
-      },
-    }),
-    allOpportunitiesCompany: createStandardViewFieldFlatMetadata({
-      ...args,
-      objectName: 'opportunity',
-      context: {
-        viewName: 'allOpportunities',
-        viewFieldName: 'company',
-        fieldName: 'company',
-        position: 11,
-        isVisible: false,
-        size: 150,
-      },
-    }),
-
     // byStage view fields
     byStageReferenceDossierEnr: createStandardViewFieldFlatMetadata({
       ...args,
@@ -220,56 +182,6 @@ export const computeStandardOpportunityViewFields = (
         size: 150,
       },
     }),
-    // Hidden fields (kept for compatibility)
-    byStageName: createStandardViewFieldFlatMetadata({
-      ...args,
-      objectName: 'opportunity',
-      context: {
-        viewName: 'byStage',
-        viewFieldName: 'name',
-        fieldName: 'name',
-        position: 5,
-        isVisible: false,
-        size: 150,
-      },
-    }),
-    byStageCreatedBy: createStandardViewFieldFlatMetadata({
-      ...args,
-      objectName: 'opportunity',
-      context: {
-        viewName: 'byStage',
-        viewFieldName: 'createdBy',
-        fieldName: 'createdBy',
-        position: 6,
-        isVisible: false,
-        size: 150,
-      },
-    }),
-    byStageCloseDate: createStandardViewFieldFlatMetadata({
-      ...args,
-      objectName: 'opportunity',
-      context: {
-        viewName: 'byStage',
-        viewFieldName: 'closeDate',
-        fieldName: 'closeDate',
-        position: 7,
-        isVisible: false,
-        size: 150,
-      },
-    }),
-    byStageCompany: createStandardViewFieldFlatMetadata({
-      ...args,
-      objectName: 'opportunity',
-      context: {
-        viewName: 'byStage',
-        viewFieldName: 'company',
-        fieldName: 'company',
-        position: 8,
-        isVisible: false,
-        size: 150,
-      },
-    }),
-
     // opportunityRecordPageFields view fields
     // Dossier ENR group
     opportunityRecordPageFieldsReferenceDossierEnr:
