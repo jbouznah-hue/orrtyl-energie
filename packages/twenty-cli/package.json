@@ -1,5 +1,5 @@
 {
-  "name": "orrtyl-cli",
+  "name": "twenty-cli",
   "version": "0.3.1",
   "description": "[DEPRECATED] Use orrtyl-sdk instead",
   "scripts": {

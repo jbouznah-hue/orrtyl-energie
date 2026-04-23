@@ -1,5 +1,5 @@
 {
-  "name": "orrtyl-ui",
+  "name": "twenty-ui",
   "private": true,
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
