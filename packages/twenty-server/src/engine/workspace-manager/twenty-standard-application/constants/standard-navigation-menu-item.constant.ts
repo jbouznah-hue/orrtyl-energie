@@ -17,40 +17,47 @@ export const STANDARD_NAVIGATION_MENU_ITEMS = {
       STANDARD_OBJECTS.person.views.allPeople.universalIdentifier,
     position: 1,
   },
+  allInstallateurs: {
+    universalIdentifier: '20202020-b010-4b10-8b10-c0aba11c0010',
+    type: NavigationMenuItemType.OBJECT,
+    viewUniversalIdentifier:
+      STANDARD_OBJECTS.installateur.views.allInstallateurs.universalIdentifier,
+    position: 2,
+  },
   allOpportunities: {
     universalIdentifier: '20202020-b004-4b04-8b04-c0aba11c0004',
     type: NavigationMenuItemType.OBJECT,
     viewUniversalIdentifier:
       STANDARD_OBJECTS.opportunity.views.allOpportunities.universalIdentifier,
-    position: 2,
+    position: 3,
   },
   allTasks: {
     universalIdentifier: '20202020-b006-4b06-8b06-c0aba11c0006',
     type: NavigationMenuItemType.OBJECT,
     viewUniversalIdentifier:
       STANDARD_OBJECTS.task.views.allTasks.universalIdentifier,
-    position: 3,
+    position: 4,
   },
   allNotes: {
     universalIdentifier: '20202020-b003-4b03-8b03-c0aba11c0003',
     type: NavigationMenuItemType.OBJECT,
     viewUniversalIdentifier:
       STANDARD_OBJECTS.note.views.allNotes.universalIdentifier,
-    position: 4,
+    position: 5,
   },
   allDashboards: {
     universalIdentifier: '20202020-b002-4b02-8b02-c0aba11c0002',
     type: NavigationMenuItemType.OBJECT,
     viewUniversalIdentifier:
       STANDARD_OBJECTS.dashboard.views.allDashboards.universalIdentifier,
-    position: 5,
+    position: 6,
   },
   workflowsFolder: {
     universalIdentifier: '20202020-b007-4b07-8b07-c0aba11c0007',
     type: NavigationMenuItemType.FOLDER,
     name: 'Workflows',
     icon: 'IconSettingsAutomation',
-    position: 6,
+    position: 7,
   },
   workflowsFolderAllWorkflows: {
     universalIdentifier: '20202020-b008-4b08-8b08-c0aba11c0008',
@@ -84,6 +91,7 @@ export const STANDARD_NAVIGATION_MENU_ITEM_DEFAULT_COLORS: Partial<
 > = {
   allCompanies: 'blue',
   allPeople: 'blue',
+  allInstallateurs: 'green',
   allTasks: 'turquoise',
   allNotes: 'turquoise',
   allOpportunities: 'red',
